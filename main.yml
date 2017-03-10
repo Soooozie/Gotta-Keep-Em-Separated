@@ -1,0 +1,6 @@
+---
+- name: launch all the things
+  hosts: localhost
+  roles:
+    - webserver
+  #  - mysql

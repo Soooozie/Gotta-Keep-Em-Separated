@@ -1,1 +1,6 @@
 hosts
+vars.yml
+roles/mysql/vars/main.yml
+roles/webserver/vars/main.yml
+roles/mysql/vars
+roles/webserver/vars
