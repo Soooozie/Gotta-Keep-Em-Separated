@@ -10,7 +10,7 @@
     flavor: gp1.subsonic
     meta:
       hostname: mysql-db
-      group: uge-master
+      group: mysql
 
 - add_host:
     name: mysql-db

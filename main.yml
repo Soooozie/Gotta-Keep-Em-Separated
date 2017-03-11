@@ -9,3 +9,8 @@
   become_user: root
   roles:
     - webserver
+
+- name: install mariadb
+  hosts: mysql-db
+  roles:
+    - mysql

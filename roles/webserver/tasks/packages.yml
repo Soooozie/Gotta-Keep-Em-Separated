@@ -9,6 +9,7 @@
         - python-dateutil
         - unzip
         - firewalld
+        - MySQL-python
 
 - name: Start Apache
   service: name=httpd state=started enabled=yes

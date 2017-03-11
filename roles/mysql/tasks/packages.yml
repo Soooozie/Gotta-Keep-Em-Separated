@@ -4,12 +4,6 @@
   with_items:
         - mariadb-server
         - mariadb
-        - php
-        - php-mysql
-        - php-gd
-        - python-dateutil
-        - unzip
-        - MySQL-python
 
 - name: Start MySQL
   service: name=mariadb state=started enabled=yes

@@ -10,7 +10,7 @@
     flavor: gp1.subsonic
     meta:
       hostname: web-server
-      group: uge-master
+      group: webserver
 
 - add_host:
     name: web-server
