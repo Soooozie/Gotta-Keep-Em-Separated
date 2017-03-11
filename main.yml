@@ -8,5 +8,4 @@
   hosts: web-server
   become_user: root
   roles:
-    - webserver 
-  #  - mysql
+    - webserver
