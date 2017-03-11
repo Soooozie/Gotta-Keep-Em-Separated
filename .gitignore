@@ -4,3 +4,5 @@ roles/mysql/vars/main.yml
 roles/webserver/vars/main.yml
 roles/mysql/vars
 roles/webserver/vars
+roles/instances/vars
+roles/instances/vars.yml

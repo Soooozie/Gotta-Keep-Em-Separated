@@ -2,5 +2,11 @@
 - name: launch all the things
   hosts: localhost
   roles:
-    - webserver
+    - instances
+
+- name: install webserver
+  hosts: web-server
+  become_user: root
+  roles:
+    - webserver 
   #  - mysql

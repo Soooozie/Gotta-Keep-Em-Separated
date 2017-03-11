@@ -1,0 +1,29 @@
+---
+- name: launch instance
+  register: mysqlDb
+  os_server:
+    state: present
+    name: mysql-db
+    image: f84868a5-5261-404a-9c54-ec317ea16b94
+    key_name: "{{ key_name }}"
+    timeout: 200
+    flavor: gp1.subsonic
+    meta:
+      hostname: mysql-db
+      group: uge-master
+
+- add_host:
+    name: mysql-db
+    groups: mysql-db
+    ansible_host: "{{mysqlDb.server.public_v4}}"
+    ansible_user: centos
+    ansible_become: true
+
+- name: wait for ssh
+  local_action: wait_for
+    port=22
+    host="{{mysqlDb.server.public_v4}}"
+    delay=10
+
+- pause:
+    seconds: 20

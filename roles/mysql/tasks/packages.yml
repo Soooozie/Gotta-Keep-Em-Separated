@@ -1,0 +1,19 @@
+---
+- name: Install Packages
+  yum: name={{ item }}
+  with_items:
+        - mariadb-server
+        - mariadb
+        - php
+        - php-mysql
+        - php-gd
+        - python-dateutil
+        - unzip
+        - MySQL-python
+
+- name: Start MySQL
+  service: name=mariadb state=started enabled=yes
+
+- name: Open port 3306
+  firewalld: port=3306/tcp permanent=yes state=enabled
+  notify: restart firewalld
