@@ -1,2 +1,6 @@
 ---
-- include: packages.yml  
+- include: packages.yml
+- include: rand_pass.yml
+- include: mysql-secure-installation.yml
+- include: bind-ip.yml
+- include: wordpress_user_remote.yml

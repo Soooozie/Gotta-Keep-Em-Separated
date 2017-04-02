@@ -10,6 +10,7 @@
         - unzip
         - firewalld
         - MySQL-python
+        - mysql 
 
 - name: Start Apache
   service: name=httpd state=started enabled=yes
