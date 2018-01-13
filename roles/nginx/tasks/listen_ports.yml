@@ -1,0 +1,31 @@
+---
+- replace:
+    dest: /etc/nginx/nginx.conf
+    regexp: '127.0.0.1'
+    replace: "{{ hostvars[groups['varnish-cache'][0]]['ansible_eth0']['ipv4']['address'] }}"
+
+- name: restart nginx
+  service: name=nginx state=restarted
+
+- name: Open port reverse proxy
+  firewalld: zone=public port={{ proxy_port }}/tcp permanent=yes state=enabled
+  notify: restart firewalld
+
+- name: allow nginx to communicate with varnish on desired port
+  shell: setsebool -P httpd_can_network_connect 1
+
+- name: Open port 80
+  firewalld: port=80/tcp permanent=yes state=enabled
+  notify: restart firewalld
+
+- name: Open port 443
+  firewalld: port=443/tcp permanent=yes state=enabled
+  notify: restart firewalld
+
+- name: http settings
+  firewalld: zone=public service=http permanent=yes state=enabled
+  notify: restart firewalld
+
+- name: https settings
+  firewalld: zone=public service=https permanent=yes state=enabled
+  notify: restart firewalld

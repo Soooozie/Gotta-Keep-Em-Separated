@@ -1,0 +1,15 @@
+---
+- name: Install Packages
+  yum: name=epel-release state=installed
+
+- name: Install nginx
+  yum: name=nginx state=installed
+
+- name: Install firewalld
+  yum: name=firewalld state=installed
+
+- name: Start nginx
+  service: name=nginx state=started enabled=yes
+
+- name: Start firewalld
+  service: name=firewalld state=started enabled=yes
