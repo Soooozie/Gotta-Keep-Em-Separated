@@ -10,6 +10,3 @@
 
 - name: Start firewalld
   service: name=firewalld state=started enabled=yes
-
-#- name: Start varnish
-#  serivce: name=varnish enabled=yes

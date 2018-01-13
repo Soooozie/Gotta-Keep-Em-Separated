@@ -6,7 +6,3 @@
 
 - name: restart varnish
   service: name=varnish state=restarted
-
-- name: Open port webserver
-  firewalld: zone=public port={{ webserver_port }}/tcp permanent=yes state=enabled
-  notify: restart firewalld
