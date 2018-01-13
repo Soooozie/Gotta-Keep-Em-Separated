@@ -10,7 +10,7 @@
         - unzip
         - firewalld
         - MySQL-python
-        - mysql 
+        - mysql
 
 - name: Start Apache
   service: name=httpd state=started enabled=yes
@@ -18,16 +18,8 @@
 - name: Start firewalld
   service: name=firewalld state=started enabled=yes
 
-- name: Open port 80
-  firewalld: zone=public port=80/tcp permanent=yes state=enabled
-  notify: restart firewalld
-
-- name: http settings
-  firewalld: zone=public service=http permanent=yes state=enabled
-  notify: restart firewalld
-
-- name: https settings
-  firewalld: zone=public service=https permanent=yes state=enabled
+- name: Open port for varnish to access
+  firewalld: zone=public port={{ webserver_port }}/tcp permanent=yes state=enabled
   notify: restart firewalld
 
 - name: Open port 3306
