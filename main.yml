@@ -14,3 +14,13 @@
   hosts: mysql-db
   roles:
     - mysql
+
+- name: install varnish
+  hosts: varnish-cache
+  roles:
+    - varnish
+
+- name: install nginx
+  hosts: nginx
+  roles:
+    - nginx

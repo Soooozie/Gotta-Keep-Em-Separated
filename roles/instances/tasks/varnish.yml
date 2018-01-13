@@ -1,28 +1,28 @@
 ---
 - name: launch instance
-  register: mysqlDb
+  register: varnishCache
   os_server:
     state: present
-    name: mysql-db
+    name: varnish-cache
     image: c922a7d0-cac5-4913-9b73-1ef84ae7ab2b
     key_name: "{{ key_name }}"
     timeout: 200
     flavor: gp1.subsonic
     meta:
-      hostname: mysql-db
-      group: mysql
+      hostname: varnish-cache
+      group: varnish
 
 - add_host:
-    name: mysql-db
-    groups: mysql-db
-    ansible_host: "{{mysqlDb.server.public_v4}}"
+    name: varnish-cache
+    groups: varnish-cache
+    ansible_host: "{{varnishCache.server.public_v4}}"
     ansible_user: centos
     ansible_become: true
 
 - name: wait for ssh
   local_action: wait_for
     port=22
-    host="{{mysqlDb.server.public_v4}}"
+    host="{{varnishCache.server.public_v4}}"
     delay=10
 
 - pause:

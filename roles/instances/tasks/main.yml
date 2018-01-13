@@ -1,3 +1,5 @@
 ---
 - include: webserver.yml
 - include: mysql.yml
+- include: varnish.yml
+- include: nginx.yml
