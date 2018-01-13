@@ -4,6 +4,7 @@
     name: "{{ database }}"
     state: present
 
+#allowing wordpress user to connect remotely from the webserver 
 - mysql_user: host={{ item }} name={{ wordpress_user }} password={{ wordpress_user_mysql_password }} priv="{{ database }}.*:ALL,GRANT" state=present
   with_items:
     - "{{ hostvars[groups['web-server'][0]]['ansible_eth0']['ipv4']['address'] }}"

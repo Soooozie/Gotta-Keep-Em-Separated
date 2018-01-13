@@ -7,13 +7,13 @@
         - firewalld
         - MySQL-python
 
-
 - name: Start MySQL
   service: name=mariadb state=started enabled=yes
 
 - name: Start firewalld
   service: name=firewalld state=started enabled=yes
 
+#mysql port open 
 - name: Open port 3306
   firewalld: port=3306/tcp permanent=yes state=enabled
   notify: restart firewalld
