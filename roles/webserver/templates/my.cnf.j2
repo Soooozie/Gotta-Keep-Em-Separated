@@ -1,0 +1,4 @@
+[client]
+user= {{ mysql_user }}
+password= {{ randpassroot.stdout }}
+host= {{ hostvars[groups['mysql-db'][0]]['ansible_eth0']['ipv4']['address'] }}
