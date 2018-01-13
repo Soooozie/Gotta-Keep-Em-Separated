@@ -1,0 +1,12 @@
+---
+- replace:
+    dest: /etc/varnish/{{ website }}.vcl
+    regexp: '127.0.0.1'
+    replace: "{{ hostvars[groups['web-server'][0]]['ansible_eth0']['ipv4']['address'] }}"
+
+- name: restart varnish
+  service: name=varnish state=restarted
+
+- name: Open port webserver
+  firewalld: zone=public port={{ webserver_port }}/tcp permanent=yes state=enabled
+  notify: restart firewalld

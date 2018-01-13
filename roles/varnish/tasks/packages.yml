@@ -1,0 +1,15 @@
+---
+- name: Install Packages
+  yum: name={{ item }}
+  with_items:
+    - firewalld
+    - epel-release
+
+- name: Install varnish
+  yum: name=varnish state=installed
+
+- name: Start firewalld
+  service: name=firewalld state=started enabled=yes
+
+#- name: Start varnish
+#  serivce: name=varnish enabled=yes

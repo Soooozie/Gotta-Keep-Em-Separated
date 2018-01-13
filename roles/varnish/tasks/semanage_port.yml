@@ -1,0 +1,3 @@
+---
+- name: allow varnish to listen on desired port
+  shell: semanage port -m -t varnishd_port_t -p tcp {{ varnish_port }}
