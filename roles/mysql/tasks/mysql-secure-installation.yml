@@ -1,15 +1,18 @@
 ---
-- name: Delete anonymous users for ansible
-  action: mysql_user user="" host="{{ ansible_hostname }}" state="absent"
+#- name: Delete anonymous users for ansible
+#  mysql_user: name="" host="{{ ansible_hostname }}" state="absent"
 
 - name: Delete anonymous users
-  action: mysql_user user="" state="absent"
+  mysql_user: name="" host_all="yes" state="absent"
 
 - name: Delete root user with ansible hostname
-  action: mysql_user user="root" host="{{ ansible_hostname }}" state="absent"
+  mysql_user: user="root" host="{{ ansible_hostname }}" state="absent"
 
 - name: Remove test database
-  action: mysql_db db=test state=absent
+  mysql_db: name=test state=absent
+
+- name: Delete mysql-db.novalocal root user
+  mysql_user: user="root" host="mysql-db.novalocal" state="absent"
 
 - name: Set MySQL Root Password
   mysql_user: user=root host={{ item }} password="{{ randpassroot.stdout }}" priv=*.*:ALL,GRANT state=present
