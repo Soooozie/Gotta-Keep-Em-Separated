@@ -1,7 +1,7 @@
 ---
 - replace:
     dest: /etc/varnish/varnish.params
-    regexp: 'VARNISH_LISTEN_PORT=80'
+    regexp: 'VARNISH_LISTEN_PORT=6081'
     replace: "VARNISH_LISTEN_PORT={{ varnish_port }}"
 
 - name: restart varnish
