@@ -21,7 +21,3 @@
 - name: Open port for varnish to access
   firewalld: zone=public port={{ webserver_port }}/tcp permanent=yes state=enabled
   notify: restart firewalld
-
-- name: Open port 3306
-  firewalld: port=3306/tcp permanent=yes state=enabled
-  notify: restart firewalld
