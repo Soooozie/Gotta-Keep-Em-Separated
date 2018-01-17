@@ -2,6 +2,9 @@
 #- name: Delete anonymous users for ansible
 #  mysql_user: name="" host="{{ ansible_hostname }}" state="absent"
 
+#DELETE FROM mysql.db WHERE db LIKE 'tes%' AND user='';
+#FLUSH PRIVILEGES;
+
 - name: Delete anonymous users
   mysql_user: name="" host_all="yes" state="absent"
 

@@ -1,7 +1,7 @@
 ---
 - replace:
     dest: "{{ path_to_webserver_config }}"
-    regexp: 'Listen 80'
+    regexp: 'Listen 80$'
     replace: "Listen {{ webserver_port }}"
 
 - name: restart apache
