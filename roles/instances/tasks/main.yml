@@ -1,5 +1,5 @@
 ---
-- include: webserver.yml
-- include: mysql.yml
-- include: varnish.yml
-- include: nginx.yml
+- import_tasks: webserver.yml
+- import_tasks: mysql.yml
+- import_tasks: varnish.yml
+- import_tasks: nginx.yml

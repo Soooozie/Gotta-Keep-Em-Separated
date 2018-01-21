@@ -1,5 +1,5 @@
 ---
-- include: packages.yml
-- include: varnish_backend.yml
-- include: semanage_port.yml
-- include: listen_port.yml
+- import_tasks: packages.yml
+- import_tasks: varnish_backend.yml
+- import_tasks: semanage_port.yml
+- import_tasks: listen_port.yml

@@ -1,6 +1,6 @@
 ---
-- include: packages.yml
-- include: rand_pass.yml
-- include: mysql-secure-installation.yml
-- include: bind-ip.yml
-- include: wordpress_user_remote.yml
+- import_tasks: packages.yml
+- import_tasks: rand_pass.yml
+- import_tasks: mysql-secure-installation.yml
+- import_tasks: bind-ip.yml
+- import_tasks: wordpress_user_remote.yml
